@@ -1,10 +1,14 @@
 class UsersController < ApplicationController
+  rescue_from Exception do
+    render html: 'rescued!'
+  end
+
   before_action :set_user, only: [:show, :update, :destroy]
 
   # GET /users
   def index
     @users = User.all
-
+    raise 'test'
     render json: @users
   end
 
